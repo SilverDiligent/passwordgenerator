@@ -1,4 +1,5 @@
 var generateBtn = document.querySelector('#generate')
+var copyBtn = document.querySelector('#copy')
 // Generate password
 function generatePassword() {
   var length = prompt(
@@ -42,6 +43,20 @@ function writePassword() {
   var passwordText = document.querySelector('#password')
   passwordText.value = password
 }
+
+function copyPassword() {
+  var passwordText = document.querySelector('#password')
+  navigator.clipboard.writeText(passwordText.value).then(
+    function () {
+      alert('Copying to clipboard was successful!')
+    },
+    function (err) {
+      console.error('Could not copy text: ', err)
+    }
+  )
+}
+
+copyBtn.addEventListener('click', copyPassword)
 
 // Rest of your code...
 
